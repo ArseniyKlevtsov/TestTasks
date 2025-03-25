@@ -3,16 +3,12 @@ use warnings;
 use SOAP::Lite;
 
 my $soap = SOAP::Lite
-    ->uri('StringHashServer')
+    ->uri('HashServer')
     ->proxy('http://localhost:8080');
 
-print "Enter string: ";
-my $str = <STDIN>;
-chomp $str;
+print "Enter key to search: ";
+my $key = <STDIN>;
+chomp $key;
 
-print "Enter word to search: ";
-my $word = <STDIN>;
-chomp $word;
-
-my $result = $soap->check_word($str, $word)->result;
+my $result = $soap->check_key($key)->result;
 print "$result\n";
